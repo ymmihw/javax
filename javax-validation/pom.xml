@@ -45,5 +45,6 @@
  </dependencies>
  <modules>
   <module>javax-validation-basic</module>
+  <module>method-constraints</module>
  </modules>
 </project>
