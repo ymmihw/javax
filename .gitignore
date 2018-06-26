@@ -1,5 +1,5 @@
-.settings
-/.classpath
-/.project
-rebel.xml
 /target
+.settings
+.classpath
+.project
+rebel.xml
