@@ -12,3 +12,9 @@ Module | Article
 javax-validation-basic | [Java Bean Validation Basics](http://www.baeldung.com/javax-validation)
 method-constraints | [Method Constraints with Bean Validation 2.0](http://www.baeldung.com/javax-validation-method-constraints)
 container-element | [Validating Container Elements with Bean Validation 2.0](http://www.baeldung.com/bean-validation-container-elements)
+
+### persistence
+
+Module | Article
+--|--
+jpa-attribute-converter | [JPA Attribute Converters](http://www.baeldung.com/jpa-attribute-converters)

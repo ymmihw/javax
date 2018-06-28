@@ -18,4 +18,7 @@
  </properties>
  <dependencies>
  </dependencies>
+ <modules>
+  <module>jpa-attribute-converter</module>
+ </modules>
 </project>
