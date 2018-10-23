@@ -28,11 +28,9 @@ public class EmailService {
     this.port = port;
     this.username = username;
     this.password = password;
-
-    sendMail();
   }
 
-  private void sendMail() {
+  public void sendMail() {
 
     Properties prop = new Properties();
     prop.put("mail.smtp.auth", true);
@@ -51,8 +49,9 @@ public class EmailService {
     try {
 
       Message message = new MimeMessage(session);
-      message.setFrom(new InternetAddress("whimmy@126.com"));
-      message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("whimmy@126.com"));
+      message.setFrom(new InternetAddress("whimmy@1261.com"));
+      message.setRecipients(Message.RecipientType.TO,
+          InternetAddress.parse("wanghaoming@ctfo.com"));
       message.setSubject("Mail Subject");
 
       String msg = "This is my first email using JavaMailer";
@@ -77,6 +76,6 @@ public class EmailService {
   }
 
   public static void main(String... args) {
-    new EmailService("smtp.126.com", 25, "whimmy@126.com", "pass");
+    new EmailService("192.168.80.135", 2525, "myuser", "secret").sendMail();;
   }
 }

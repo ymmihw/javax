@@ -1,0 +1,12 @@
+version: '2'
+services:
+  smtp:
+    image: namshi/smtp
+    ports:
+      - 2525:2525
+    environment:
+      - PORT=2525
+      - RELAY_NETWORKS=:0.0.0.0/0
+      - SMARTHOST_USER=myuser
+      - SMARTHOST_PASSWORD=secret
+    restart: always
