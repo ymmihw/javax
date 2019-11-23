@@ -18,3 +18,4 @@ container-element | [Validating Container Elements with Bean Validation 2.0](htt
 Module | Article
 --|--
 jpa-attribute-converter | [JPA Attribute Converters](http://www.baeldung.com/jpa-attribute-converters)
+jpa-entity-graph | [JPA Entity Graph](https://www.baeldung.com/jpa-entity-graph)
