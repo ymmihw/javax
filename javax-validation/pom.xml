@@ -42,5 +42,6 @@
   <module>javax-validation-basic</module>
   <module>method-constraints</module>
   <module>container-element</module>
+  <module>hibernate-validator</module>
  </modules>
 </project>
