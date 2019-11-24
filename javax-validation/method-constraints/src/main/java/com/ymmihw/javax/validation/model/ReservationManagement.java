@@ -7,8 +7,6 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import com.ymmihw.javax.validation.constraints.ConsistentDateParameters;
@@ -16,9 +14,6 @@ import com.ymmihw.javax.validation.constraints.ConsistentDateParameters;
 @Controller
 @Validated
 public class ReservationManagement {
-
-  @Autowired
-  private ApplicationContext applicationContext;
 
   @ConsistentDateParameters
   public void createReservation(LocalDate begin, LocalDate end, @NotNull Customer customer) {

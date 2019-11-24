@@ -7,9 +7,7 @@
   <artifactId>javax</artifactId>
   <version>0.0.1-SNAPSHOT</version>
  </parent>
- <groupId>com.ymmihw.javax</groupId>
  <artifactId>javax-mail</artifactId>
- <version>0.0.1-SNAPSHOT</version>
  <name>javax-mail</name>
  <url>http://maven.apache.org</url>
  <properties>
@@ -19,7 +17,6 @@
   <dependency>
    <groupId>javax.mail</groupId>
    <artifactId>javax.mail-api</artifactId>
-   <version>1.6.1</version>
   </dependency>
   <dependency>
    <groupId>com.sun.mail</groupId>

@@ -46,4 +46,10 @@
    </plugin>
   </plugins>
  </build>
+ <modules>
+  <module>javax-mail</module>
+  <module>javax-persistence</module>
+  <module>javax-servlet</module>
+  <module>javax-validation</module>
+ </modules>
 </project>

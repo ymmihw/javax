@@ -21,6 +21,7 @@ public class MainApp {
     // Using Criteria API
     post = postRepository.findUsingCriteria(postId);
 
+    System.out.println(post);
     postRepository.clean();
   }
 }
