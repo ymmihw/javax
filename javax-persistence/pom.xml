@@ -19,5 +19,6 @@
  <modules>
   <module>jpa-attribute-converter</module>
   <module>jpa-entity-graph</module>
+  <module>jpa-annotation-SecondaryTable</module>
  </modules>
 </project>

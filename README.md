@@ -20,3 +20,4 @@ Module | Article
 --|--
 jpa-attribute-converter | [JPA Attribute Converters](http://www.baeldung.com/jpa-attribute-converters)
 jpa-entity-graph | [JPA Entity Graph](https://www.baeldung.com/jpa-entity-graph)
+jpa-annotation-SecondaryTable | [Mapping a Single Entity to Multiple Tables in JPA](https://www.baeldung.com/jpa-mapping-single-entity-to-multiple-tables)
