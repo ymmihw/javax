@@ -1,7 +1,7 @@
 package com.ymmihw.javax.entity;
 
 import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -13,7 +13,8 @@ import lombok.Setter;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "product_type", discriminatorType = DiscriminatorType.INTEGER)
+@DiscriminatorColumn(name = "product_type")
+@DiscriminatorValue("null")
 // @DiscriminatorFormula("case when author is not null then 1 else 2 end")
 @NoArgsConstructor
 @AllArgsConstructor
