@@ -1,7 +1,6 @@
 package com.ymmihw.javax.secondarytable.embeddable;
 
 import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -11,10 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "meal")
 @SecondaryTable(name = "allergens", pkJoinColumns = @PrimaryKeyJoinColumn(name = "meal_id"))
+@Getter
+@Setter
 public class MealWithEmbeddedAllergens {
 
   @Id
@@ -33,42 +36,6 @@ public class MealWithEmbeddedAllergens {
 
   @Embedded
   private AllergensAsEmbeddable allergens;
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public BigDecimal getPrice() {
-    return price;
-  }
-
-  public void setPrice(BigDecimal price) {
-    this.price = price;
-  }
-
-  public AllergensAsEmbeddable getAllergens() {
-    return allergens;
-  }
-
-  public void setAllergens(AllergensAsEmbeddable allergens) {
-    this.allergens = allergens;
-  }
-
-  public Long getId() {
-    return id;
-  }
 
   @Override
   public String toString() {

@@ -1,7 +1,6 @@
 package com.ymmihw.javax.secondarytable;
 
 import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,10 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "meal")
 @SecondaryTable(name = "allergens", pkJoinColumns = @PrimaryKeyJoinColumn(name = "meal_id"))
+@Getter
+@Setter
 public class MealAsSingleEntity {
 
   @Id
@@ -39,57 +42,6 @@ public class MealAsSingleEntity {
   @Column(name = "sesame_seeds", table = "allergens")
   private boolean sesameSeeds;
 
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public BigDecimal getPrice() {
-    return price;
-  }
-
-  public void setPrice(BigDecimal price) {
-    this.price = price;
-  }
-
-  public boolean isPeanuts() {
-    return peanuts;
-  }
-
-  public void setPeanuts(boolean peanuts) {
-    this.peanuts = peanuts;
-  }
-
-  public boolean isCelery() {
-    return celery;
-  }
-
-  public void setCelery(boolean celery) {
-    this.celery = celery;
-  }
-
-  public boolean isSesameSeeds() {
-    return sesameSeeds;
-  }
-
-  public void setSesameSeeds(boolean sesameSeeds) {
-    this.sesameSeeds = sesameSeeds;
-  }
-
-  public Long getId() {
-    return id;
-  }
 
   @Override
   public String toString() {

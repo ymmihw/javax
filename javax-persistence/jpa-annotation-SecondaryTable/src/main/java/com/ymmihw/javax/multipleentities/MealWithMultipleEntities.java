@@ -8,9 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "meal")
+@Getter
+@Setter
 public class MealWithMultipleEntities {
 
   @Id
@@ -29,42 +33,6 @@ public class MealWithMultipleEntities {
 
   @OneToOne(mappedBy = "meal")
   private AllergensAsEntity allergens;
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public BigDecimal getPrice() {
-    return price;
-  }
-
-  public void setPrice(BigDecimal price) {
-    this.price = price;
-  }
-
-  public AllergensAsEntity getAllergens() {
-    return allergens;
-  }
-
-  public void setAllergens(AllergensAsEntity allergens) {
-    this.allergens = allergens;
-  }
-
-  public Long getId() {
-    return id;
-  }
 
   @Override
   public String toString() {

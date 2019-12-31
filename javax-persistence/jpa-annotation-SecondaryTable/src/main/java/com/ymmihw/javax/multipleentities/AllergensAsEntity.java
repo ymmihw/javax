@@ -9,9 +9,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import com.ymmihw.javax.secondarytable.MealAsSingleEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "allergens")
+@Getter
+@Setter
 public class AllergensAsEntity {
 
   @Id
@@ -31,38 +35,6 @@ public class AllergensAsEntity {
 
   @Column(name = "sesame_seeds")
   private boolean sesameSeeds;
-
-  public MealAsSingleEntity getMeal() {
-    return meal;
-  }
-
-  public void setMeal(MealAsSingleEntity meal) {
-    this.meal = meal;
-  }
-
-  public boolean isPeanuts() {
-    return peanuts;
-  }
-
-  public void setPeanuts(boolean peanuts) {
-    this.peanuts = peanuts;
-  }
-
-  public boolean isCelery() {
-    return celery;
-  }
-
-  public void setCelery(boolean celery) {
-    this.celery = celery;
-  }
-
-  public boolean isSesameSeeds() {
-    return sesameSeeds;
-  }
-
-  public void setSesameSeeds(boolean sesameSeeds) {
-    this.sesameSeeds = sesameSeeds;
-  }
 
   @Override
   public String toString() {

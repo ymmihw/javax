@@ -2,8 +2,12 @@ package com.ymmihw.javax.secondarytable.embeddable;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import lombok.Getter;
+import lombok.Setter;
 
 @Embeddable
+@Getter
+@Setter
 public class AllergensAsEmbeddable {
 
   @Column(name = "peanuts", table = "allergens")
@@ -14,30 +18,6 @@ public class AllergensAsEmbeddable {
 
   @Column(name = "sesame_seeds", table = "allergens")
   private boolean sesameSeeds;
-
-  public boolean isPeanuts() {
-    return peanuts;
-  }
-
-  public void setPeanuts(boolean peanuts) {
-    this.peanuts = peanuts;
-  }
-
-  public boolean isCelery() {
-    return celery;
-  }
-
-  public void setCelery(boolean celery) {
-    this.celery = celery;
-  }
-
-  public boolean isSesameSeeds() {
-    return sesameSeeds;
-  }
-
-  public void setSesameSeeds(boolean sesameSeeds) {
-    this.sesameSeeds = sesameSeeds;
-  }
 
   @Override
   public String toString() {
