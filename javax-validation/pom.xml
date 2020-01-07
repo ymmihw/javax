@@ -43,7 +43,7 @@
   <module>method-constraints</module>
   <module>container-element</module>
   <module>hibernate-validator</module>
-
   <module>javax-validation-groups</module>
+  <module>javax-validation-for-enum</module>
  </modules>
 </project>
