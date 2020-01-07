@@ -6,20 +6,20 @@ import java.util.Arrays;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public abstract class EnumSubSetValidator<T extends Annotation, U> implements ConstraintValidator<T, U> {
-    private U[] subset;
+public abstract class EnumSubSetValidator<T extends Annotation, U>
+    implements ConstraintValidator<T, U> {
+  private U[] subset;
 
-    protected void initialize(U[] subset) {
-        this.subset = subset;
+  protected void initialize(U[] subset) {
+    this.subset = subset;
+  }
+
+  @Override
+  public boolean isValid(U value, ConstraintValidatorContext context) {
+    if (value == null) {
+      return true;
     }
 
-    @Override
-    public boolean isValid(U value, ConstraintValidatorContext context) {
-        if (value == null) {
-            return true;
-        }
-
-        return Arrays.asList(subset)
-            .contains(value);
-    }
+    return Arrays.asList(subset).contains(value);
+  }
 }
