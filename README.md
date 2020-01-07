@@ -14,6 +14,7 @@ method-constraints | [Method Constraints with Bean Validation 2.0](http://www.ba
 container-element | [Validating Container Elements with Bean Validation 2.0](http://www.baeldung.com/bean-validation-container-elements)
 hibernate-validator-parametermessageinterpolator | [Guide to ParameterMessageInterpolator](https://www.baeldung.com/hibernate-parametermessageinterpolator)
 javax-validation-groups | [Grouping Javax Validation Constraints](https://www.baeldung.com/javax-validation-groups)
+javax-validation-for-enum | [javax-validation-for-enum](https://www.baeldung.com/javax-validations-enums)
 
 ### persistence
 
