@@ -14,8 +14,10 @@ method-constraints | [Method Constraints with Bean Validation 2.0](http://www.ba
 container-element | [Validating Container Elements with Bean Validation 2.0](http://www.baeldung.com/bean-validation-container-elements)
 hibernate-validator-parametermessageinterpolator | [Guide to ParameterMessageInterpolator](https://www.baeldung.com/hibernate-parametermessageinterpolator)
 javax-validation-groups | [Grouping Javax Validation Constraints](https://www.baeldung.com/javax-validation-groups)
-javax-validation-for-enum | [javax-validation-for-enum](https://www.baeldung.com/javax-validations-enums)
+javax-validation-for-enum | [Validations for Enum Types](https://www.baeldung.com/javax-validations-enums)
 javax-validation-not-null-empty-blank | [Difference Between @NotNull, @NotEmpty, and @NotBlank Constraints in Bean Validation](https://www.baeldung.com/java-bean-validation-not-null-empty-blank)
+javax-validation-bigdecimal | [Javax BigDecimal Validation](https://www.baeldung.com/javax-bigdecimal-validation)
+
 
 #### persistence
 
