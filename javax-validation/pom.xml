@@ -42,7 +42,6 @@
   <module>javax-validation-basic</module>
   <module>method-constraints</module>
   <module>container-element</module>
-  <module>hibernate-validator</module>
   <module>javax-validation-groups</module>
   <module>javax-validation-for-enum</module>
   <module>javax-validation-not-null-empty-blank</module>
