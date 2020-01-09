@@ -56,5 +56,6 @@
   <module>javax-persistence</module>
   <module>javax-servlet</module>
   <module>javax-validation</module>
+  <module>javax-overlap</module>
  </modules>
 </project>
