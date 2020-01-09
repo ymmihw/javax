@@ -7,12 +7,19 @@
   <artifactId>javax-persistence</artifactId>
   <version>0.0.1-SNAPSHOT</version>
  </parent>
- <artifactId>jpa-annotation-SecondaryTable</artifactId>
- <name>jpa-annotation-SecondaryTable</name>
+ <groupId>com.ymmihw.javax</groupId>
+ <artifactId>jpa-batch</artifactId>
+ <version>0.0.1-SNAPSHOT</version>
+ <name>jpa-batch</name>
  <url>http://maven.apache.org</url>
  <properties>
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
  </properties>
  <dependencies>
+  <dependency>
+   <groupId>net.ttddyy</groupId>
+   <artifactId>datasource-proxy</artifactId>
+   <version>1.5.1</version>
+  </dependency>
  </dependencies>
 </project>
