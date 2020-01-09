@@ -30,6 +30,5 @@
   <module>jpa-annotation-SecondaryTable</module>
   <module>jpa-inheritance</module>
   <module>jpa-persistence-context</module>
-  <module>jpa-batch</module>
  </modules>
 </project>
