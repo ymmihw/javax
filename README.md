@@ -27,6 +27,7 @@ jpa-entity-graph | [JPA Entity Graph](https://www.baeldung.com/jpa-entity-graph)
 jpa-inheritance | [Hibernate Inheritance Mapping](https://www.baeldung.com/hibernate-inheritance)
 jpa-annotation-SecondaryTable | [Mapping a Single Entity to Multiple Tables in JPA] https://www.baeldung.com/jpa-mapping-single-entity-to-multiple-tables)
 jpa-persistence-context | [JPA/Hibernate Persistence Context](https://www.baeldung.com/jpa-hibernate-persistence-context)
+jpa-json-object | 
 
 #### overlap
 
