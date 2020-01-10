@@ -1,9 +1,10 @@
-package com.ymmihw.javax;
+package com.ymmihw.javax.entity;
 
 import java.util.Map;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import com.ymmihw.javax.converter.HashMapConverter;
 import lombok.Getter;
 import lombok.Setter;
 
