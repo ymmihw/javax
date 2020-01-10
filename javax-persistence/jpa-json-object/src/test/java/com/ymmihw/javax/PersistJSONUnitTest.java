@@ -1,55 +1,27 @@
 package com.ymmihw.javax;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.junit.After;
-import org.junit.Before;
+import javax.transaction.Transactional;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringRunner;
+import com.ymmihw.javax.entity.Customer;
+import com.ymmihw.javax.entity.CustomerWithAnotherField;
+import com.ymmihw.javax.repo.CustomerRepository;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = App.class)
+@TestPropertySource("classpath:hibernate-persistjson.properties")
+@Transactional
 public class PersistJSONUnitTest {
-
-  private Session session;
-
-  @Before
-  public void init() {
-    try {
-      Configuration configuration = new Configuration();
-
-      Properties properties = new Properties();
-      properties.load(Thread.currentThread().getContextClassLoader()
-          .getResourceAsStream("hibernate-persistjson.properties"));
-
-      configuration.setProperties(properties);
-
-      ServiceRegistry serviceRegistry =
-          new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-      MetadataSources metadataSources = new MetadataSources(serviceRegistry);
-      metadataSources.addAnnotatedClass(Customer.class);
-      metadataSources.addAnnotatedClass(CustomerWithAnotherField.class);
-      SessionFactory factory = metadataSources.buildMetadata().buildSessionFactory();
-
-      session = factory.openSession();
-    } catch (HibernateException | IOException e) {
-      fail("Failed to initiate Hibernate Session [Exception:" + e.toString() + "]");
-    }
-  }
-
-  @After
-  public void close() {
-    if (session != null)
-      session.close();
-  }
+  @Autowired
+  private CustomerRepository customerRepository;
 
   @Test
   public void givenCustomer_whenCallingSerializeCustomerAttributes_thenAttributesAreConverted()
@@ -90,18 +62,11 @@ public class PersistJSONUnitTest {
 
     customer.setCustomerAttributes(attributes);
 
-    session.beginTransaction();
+    customer = customerRepository.save(customer);
 
-    int id = (int) session.save(customer);
+    customer = customerRepository.getOne(customer.getId());
 
-    session.flush();
-    session.clear();
-
-    Customer result =
-        session.createNativeQuery("select * from Customer where Customer.id = :id", Customer.class)
-            .setParameter("id", id).getSingleResult();
-
-    assertEquals(2, result.getCustomerAttributes().size());
+    assertEquals(2, customer.getCustomerAttributes().size());
   }
 
 }

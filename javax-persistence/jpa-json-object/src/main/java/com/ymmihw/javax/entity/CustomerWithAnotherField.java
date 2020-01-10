@@ -1,4 +1,4 @@
-package com.ymmihw.javax;
+package com.ymmihw.javax.entity;
 
 import java.io.IOException;
 import java.util.Map;
