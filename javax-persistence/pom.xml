@@ -31,5 +31,6 @@
   <module>jpa-inheritance</module>
   <module>jpa-persistence-context</module>
   <module>jpa-json-object</module>
+  <module>jpa-identifier</module>
  </modules>
 </project>
