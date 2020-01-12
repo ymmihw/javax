@@ -28,6 +28,7 @@ jpa-inheritance | [Hibernate Inheritance Mapping](https://www.baeldung.com/hiber
 jpa-annotation-SecondaryTable | [Mapping a Single Entity to Multiple Tables in JPA] https://www.baeldung.com/jpa-mapping-single-entity-to-multiple-tables)
 jpa-persistence-context | [JPA/Hibernate Persistence Context](https://www.baeldung.com/jpa-hibernate-persistence-context)
 jpa-json-object | [Persist a JSON Object Using Hibernate](https://www.baeldung.com/hibernate-persist-json-object)
+jpa-identifier | [An Overview of Identifiers in Hibernate](https://www.baeldung.com/hibernate-identifiers)
 
 #### overlap
 
