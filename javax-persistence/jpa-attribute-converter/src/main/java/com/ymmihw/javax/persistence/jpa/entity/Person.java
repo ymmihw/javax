@@ -1,11 +1,15 @@
-package com.ymmihw.javax.persistence.jpa;
+package com.ymmihw.javax.persistence.jpa.entity;
 
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity(name = "PersonTable")
+@Entity
+@Getter
+@Setter
 public class Person {
 
   @Id
@@ -14,17 +18,5 @@ public class Person {
 
   @Convert(converter = PersonNameConverter.class)
   private PersonName personName;
-
-  public PersonName getPersonName() {
-    return personName;
-  }
-
-  public void setPersonName(PersonName personName) {
-    this.personName = personName;
-  }
-
-  public Long getId() {
-    return id;
-  }
 
 }

@@ -1,4 +1,4 @@
-package com.ymmihw.javax.persistence.jpa;
+package com.ymmihw.javax.persistence.jpa.entity;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
