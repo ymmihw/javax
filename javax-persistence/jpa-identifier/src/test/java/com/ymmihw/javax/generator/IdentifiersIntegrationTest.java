@@ -17,6 +17,8 @@ import com.ymmihw.javax.entity.Product;
 import com.ymmihw.javax.entity.Student;
 import com.ymmihw.javax.entity.User;
 import com.ymmihw.javax.entity.UserProfile;
+import com.ymmihw.javax.entity.auto.Auto1;
+import com.ymmihw.javax.entity.auto.Auto2;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class)
@@ -25,6 +27,18 @@ public class IdentifiersIntegrationTest {
 
   @Autowired
   private EntityManager entityManager;
+
+  @Test
+  public void whenSaveTwoAutoIdEntities_thenOk() {
+    Auto1 auto1 = new Auto1();
+    entityManager.persist(auto1);
+    Auto2 auto2 = new Auto2();
+    entityManager.persist(auto2);
+
+    assertThat(auto1.getStudentId()).isEqualTo(1L);
+    assertThat(auto2.getStudentId()).isEqualTo(2L);
+
+  }
 
   @Test
   public void whenSaveSimpleIdEntities_thenOk() {
