@@ -9,16 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.ymmihw.javax.App;
-import com.ymmihw.javax.entity.Course;
-import com.ymmihw.javax.entity.OrderEntry;
-import com.ymmihw.javax.entity.OrderEntryIdClass;
-import com.ymmihw.javax.entity.OrderEntryPK;
 import com.ymmihw.javax.entity.Product;
 import com.ymmihw.javax.entity.Student;
 import com.ymmihw.javax.entity.User;
 import com.ymmihw.javax.entity.UserProfile;
 import com.ymmihw.javax.entity.auto.Auto1;
 import com.ymmihw.javax.entity.auto.Auto2;
+import com.ymmihw.javax.entity.auto.Course;
+import com.ymmihw.javax.entity.composite.OrderEntry;
+import com.ymmihw.javax.entity.composite.OrderEntryIdClass;
+import com.ymmihw.javax.entity.composite.OrderEntryPK;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class)
@@ -37,6 +37,8 @@ public class IdentifiersIntegrationTest {
 
     assertThat(auto1.getStudentId()).isEqualTo(1L);
     assertThat(auto2.getStudentId()).isEqualTo(2L);
+    Course course = new Course();
+    entityManager.persist(course);
 
   }
 
@@ -49,10 +51,6 @@ public class IdentifiersIntegrationTest {
 
     assertThat(student.getStudentId()).isEqualTo(1L);
     assertThat(user.getUserId()).isEqualTo(4L);
-
-    Course course = new Course();
-    entityManager.persist(course);
-
   }
 
   @Test

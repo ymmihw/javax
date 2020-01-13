@@ -1,4 +1,4 @@
-package com.ymmihw.javax.entity;
+package com.ymmihw.javax.entity.auto;
 
 import java.util.UUID;
 import javax.persistence.Entity;
