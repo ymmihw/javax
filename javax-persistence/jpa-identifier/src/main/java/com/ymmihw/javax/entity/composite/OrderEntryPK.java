@@ -1,12 +1,10 @@
-package com.ymmihw.javax.entity;
+package com.ymmihw.javax.entity.composite;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Embeddable;
 import lombok.Getter;
 import lombok.Setter;
 
-@Embeddable
 @Getter
 @Setter
 public class OrderEntryPK implements Serializable {

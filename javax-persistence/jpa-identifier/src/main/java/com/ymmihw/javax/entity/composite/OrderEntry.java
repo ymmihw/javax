@@ -1,4 +1,4 @@
-package com.ymmihw.javax.entity;
+package com.ymmihw.javax.entity.composite;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;

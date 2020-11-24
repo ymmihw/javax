@@ -1,34 +1,23 @@
 package com.ymmihw.javax.persistence.jpa;
 
 import static org.junit.Assert.assertEquals;
-import java.io.IOException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.junit.After;
-import org.junit.Before;
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import com.ymmihw.javax.persistence.jpa.entity.Person;
+import com.ymmihw.javax.persistence.jpa.entity.PersonName;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = App.class)
+@Transactional
 public class PersonNameConverterTest {
 
-  private Session session;
-  private Transaction transaction;
-
-  @Before
-  public void setUp() throws IOException {
-    session = HibernateUtil.getSessionFactory().openSession();
-    transaction = session.beginTransaction();
-
-    session.createNativeQuery("delete from personTable").executeUpdate();
-
-    transaction.commit();
-    transaction = session.beginTransaction();
-  }
-
-  @After
-  public void tearDown() {
-    transaction.rollback();
-    session.close();
-  }
+  @Autowired
+  private EntityManager entityManager;
 
   @Test
   public void givenPersonName_WhenSaving_ThenNameAndSurnameConcat() {
@@ -42,20 +31,20 @@ public class PersonNameConverterTest {
     Person person = new Person();
     person.setPersonName(personName);
 
-    Long id = (Long) session.save(person);
+    entityManager.persist(person);
 
-    session.flush();
-    session.clear();
+    entityManager.flush();
+    entityManager.clear();
 
-    String dbPersonName = (String) session
-        .createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-        .setParameter("id", id).getSingleResult();
+    String dbPersonName = (String) entityManager
+        .createNativeQuery("select p.person_name from person p where p.id = :id")
+        .setParameter("id", person.getId()).getSingleResult();
 
     assertEquals(surname + ", " + name, dbPersonName);
 
-    Person dbPerson =
-        session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
-            .setParameter("id", id).getSingleResult();
+    Person dbPerson = (Person) entityManager
+        .createNativeQuery("select * from person p where p.id = :id", Person.class)
+        .setParameter("id", person.getId()).getSingleResult();
 
     assertEquals(dbPerson.getPersonName().getName(), name);
     assertEquals(dbPerson.getPersonName().getSurname(), surname);
@@ -73,20 +62,20 @@ public class PersonNameConverterTest {
     Person person = new Person();
     person.setPersonName(personName);
 
-    Long id = (Long) session.save(person);
+    entityManager.persist(person);
 
-    session.flush();
-    session.clear();
+    entityManager.flush();
+    entityManager.clear();
 
-    String dbPersonName = (String) session
-        .createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-        .setParameter("id", id).getSingleResult();
+    String dbPersonName = (String) entityManager
+        .createNativeQuery("select p.person_name from person p where p.id = :id")
+        .setParameter("id", person.getId()).getSingleResult();
 
     assertEquals("", dbPersonName);
 
-    Person dbPerson =
-        session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
-            .setParameter("id", id).getSingleResult();
+    Person dbPerson = (Person) entityManager
+        .createNativeQuery("select * from person p where p.id = :id", Person.class)
+        .setParameter("id", person.getId()).getSingleResult();
 
     assertEquals(dbPerson.getPersonName(), null);
   }
@@ -103,20 +92,20 @@ public class PersonNameConverterTest {
     Person person = new Person();
     person.setPersonName(personName);
 
-    Long id = (Long) session.save(person);
+    entityManager.persist(person);
 
-    session.flush();
-    session.clear();
+    entityManager.flush();
+    entityManager.clear();
 
-    String dbPersonName = (String) session
-        .createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-        .setParameter("id", id).getSingleResult();
+    String dbPersonName = (String) entityManager
+        .createNativeQuery("select p.person_name from person p where p.id = :id")
+        .setParameter("id", person.getId()).getSingleResult();
 
     assertEquals("surname, ", dbPersonName);
 
-    Person dbPerson =
-        session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
-            .setParameter("id", id).getSingleResult();
+    Person dbPerson = (Person) entityManager
+        .createNativeQuery("select * from person p where p.id = :id", Person.class)
+        .setParameter("id", person.getId()).getSingleResult();
 
     assertEquals(dbPerson.getPersonName().getName(), name);
     assertEquals(dbPerson.getPersonName().getSurname(), surname);
@@ -134,20 +123,20 @@ public class PersonNameConverterTest {
     Person person = new Person();
     person.setPersonName(personName);
 
-    Long id = (Long) session.save(person);
+    entityManager.persist(person);
 
-    session.flush();
-    session.clear();
+    entityManager.flush();
+    entityManager.clear();
 
-    String dbPersonName = (String) session
-        .createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-        .setParameter("id", id).getSingleResult();
+    String dbPersonName = (String) entityManager
+        .createNativeQuery("select p.person_name from person p where p.id = :id")
+        .setParameter("id", person.getId()).getSingleResult();
 
     assertEquals("name", dbPersonName);
 
-    Person dbPerson =
-        session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
-            .setParameter("id", id).getSingleResult();
+    Person dbPerson = (Person) entityManager
+        .createNativeQuery("select * from person p where p.id = :id", Person.class)
+        .setParameter("id", person.getId()).getSingleResult();
 
     assertEquals(dbPerson.getPersonName().getName(), name);
     assertEquals(dbPerson.getPersonName().getSurname(), surname);
@@ -165,20 +154,20 @@ public class PersonNameConverterTest {
     Person person = new Person();
     person.setPersonName(personName);
 
-    Long id = (Long) session.save(person);
+    entityManager.persist(person);
 
-    session.flush();
-    session.clear();
+    entityManager.flush();
+    entityManager.clear();
 
-    String dbPersonName = (String) session
-        .createNativeQuery("select p.personName from PersonTable p where p.id = :id")
-        .setParameter("id", id).getSingleResult();
+    String dbPersonName = (String) entityManager
+        .createNativeQuery("select p.person_name from person p where p.id = :id")
+        .setParameter("id", person.getId()).getSingleResult();
 
     assertEquals("", dbPersonName);
 
-    Person dbPerson =
-        session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
-            .setParameter("id", id).getSingleResult();
+    Person dbPerson = (Person) entityManager
+        .createNativeQuery("select * from person p where p.id = :id", Person.class)
+        .setParameter("id", person.getId()).getSingleResult();
 
     assertEquals(dbPerson.getPersonName(), null);
   }

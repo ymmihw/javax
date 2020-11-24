@@ -32,5 +32,6 @@
   <module>jpa-persistence-context</module>
   <module>jpa-json-object</module>
   <module>jpa-identifier</module>
+  <module>jpa-cascaderemove-vs-orphanremoval</module>
  </modules>
 </project>

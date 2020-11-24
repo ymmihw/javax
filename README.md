@@ -29,6 +29,7 @@ jpa-annotation-SecondaryTable | [Mapping a Single Entity to Multiple Tables in J
 jpa-persistence-context | [JPA/Hibernate Persistence Context](https://www.baeldung.com/jpa-hibernate-persistence-context)
 jpa-json-object | [Persist a JSON Object Using Hibernate](https://www.baeldung.com/hibernate-persist-json-object)
 jpa-identifier | [An Overview of Identifiers in Hibernate](https://www.baeldung.com/hibernate-identifiers)
+jpa-cascaderemove-vs-orphanremoval | [JPA CascadeType.REMOVE vs orphanRemoval](https://www.baeldung.com/jpa-cascade-remove-vs-orphanremoval)
 
 #### overlap
 

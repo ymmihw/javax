@@ -1,4 +1,4 @@
-package com.ymmihw.javax.entity;
+package com.ymmihw.javax.entity.composite;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,4 +15,6 @@ public class OrderEntryIdClass {
   private long orderId;
   @Id
   private long productId;
+
+  private String name;
 }
