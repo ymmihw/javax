@@ -4,6 +4,7 @@ Module | Article
 --|--
 javax-mail | [Sending Emails with Java](http://www.baeldung.com/java-email)
 servlet-redirect-forward | [Servlet Redirect vs Forward](http://www.baeldung.com/servlet-redirect-forward)
+httpsessionlistener-with-metrics | [HttpSessionListener Example – Monitoring](http://www.baeldung.com/httpsessionlistener_with_metrics)
 
 #### validation
 
