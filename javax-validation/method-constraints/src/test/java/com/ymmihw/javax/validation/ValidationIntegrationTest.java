@@ -1,6 +1,6 @@
 package com.ymmihw.javax.validation;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.time.LocalDate;
@@ -10,8 +10,8 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
 import javax.validation.executable.ExecutableValidator;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import com.ymmihw.javax.validation.model.Customer;
 import com.ymmihw.javax.validation.model.Reservation;
 import com.ymmihw.javax.validation.model.ReservationManagement;
@@ -20,7 +20,7 @@ public class ValidationIntegrationTest {
 
   private ExecutableValidator executableValidator;
 
-  @Before
+  @BeforeEach
   public void getExecutableValidator() {
 
     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();

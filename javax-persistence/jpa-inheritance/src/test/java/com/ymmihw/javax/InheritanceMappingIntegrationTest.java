@@ -3,12 +3,10 @@ package com.ymmihw.javax;
 import static org.assertj.core.api.Assertions.assertThat;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.junit4.SpringRunner;
 import com.ymmihw.javax.entity.Bag;
 import com.ymmihw.javax.entity.Book;
 import com.ymmihw.javax.entity.Car;
@@ -17,8 +15,6 @@ import com.ymmihw.javax.entity.Pen;
 import com.ymmihw.javax.entity.Pet;
 
 
-
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class)
 @Transactional
 public class InheritanceMappingIntegrationTest {
@@ -44,7 +40,8 @@ public class InheritanceMappingIntegrationTest {
     MyEmployee emp = new MyEmployee(1, "john", "baeldung");
     em.persist(emp);
 
-    assertThat(em.createQuery("from com.ymmihw.javax.entity.Person").getResultList().size()).isEqualTo(1);
+    assertThat(em.createQuery("from com.ymmihw.javax.entity.Person").getResultList().size())
+        .isEqualTo(1);
   }
 
   @Test
@@ -71,6 +68,7 @@ public class InheritanceMappingIntegrationTest {
     Bag bag = new Bag(1, "large");
     em.persist(bag);
 
-    assertThat(em.createQuery("from com.ymmihw.javax.entity.Item").getResultList().size()).isEqualTo(0);
+    assertThat(em.createQuery("from com.ymmihw.javax.entity.Item").getResultList().size())
+        .isEqualTo(0);
   }
 }

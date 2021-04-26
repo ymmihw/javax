@@ -1,17 +1,14 @@
 package com.ymmihw.javax.persistence.jpa;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import com.ymmihw.javax.persistence.jpa.entity.Person;
 import com.ymmihw.javax.persistence.jpa.entity.PersonName;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class)
 @Transactional
 public class PersonNameConverterTest {

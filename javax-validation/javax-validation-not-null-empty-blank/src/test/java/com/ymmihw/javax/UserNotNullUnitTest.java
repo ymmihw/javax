@@ -5,14 +5,14 @@ import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class UserNotNullUnitTest {
 
   private static Validator validator;
 
-  @BeforeClass
+  @BeforeAll
   public static void setupValidatorInstance() {
     validator = Validation.buildDefaultValidatorFactory().getValidator();
   }

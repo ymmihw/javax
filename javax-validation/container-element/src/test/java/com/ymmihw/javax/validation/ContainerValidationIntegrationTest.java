@@ -1,6 +1,6 @@
 package com.ymmihw.javax.validation;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Collections;
 import java.util.OptionalInt;
 import java.util.Set;
@@ -8,14 +8,14 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import com.ymmihw.javax.validation.extractor.ProfileValueExtractor;
 
 public class ContainerValidationIntegrationTest {
   private Validator validator;
 
-  @Before
+  @BeforeEach
   public void setup() {
     ValidatorFactory factory = Validation.byDefaultProvider().configure()
         .addValueExtractor(new ProfileValueExtractor()).buildValidatorFactory();

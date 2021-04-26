@@ -1,19 +1,17 @@
 package com.ymmihw.javax;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import javax.persistence.EntityExistsException;
 import javax.persistence.TransactionRequiredException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import com.ymmihw.javax.entity.User;
 import com.ymmihw.javax.service.ExtendedPersistenceContextUserService;
 import com.ymmihw.javax.service.TransctionPersistenceContextUserService;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = PersistenceContextDemoApplication.class)
 public class PersistenceContextIntegrationTest {
 
@@ -34,10 +32,11 @@ public class PersistenceContextIntegrationTest {
     assertNotNull(userFromExtendedPersistenceContext);
   }
 
-  @Test(expected = TransactionRequiredException.class)
+  @Test
   public void testThatUserSaveWithoutTransactionThrowException() {
     User user = new User(122L, "Devender", "admin");
-    transctionPersistenceContext.insertWithoutTransaction(user);
+    assertThrows(TransactionRequiredException.class,
+        () -> transctionPersistenceContext.insertWithoutTransaction(user));
   }
 
   @Test
@@ -52,12 +51,14 @@ public class PersistenceContextIntegrationTest {
     assertNull(userFromTransctionPersistenceContext);
   }
 
-  @Test(expected = EntityExistsException.class)
+  @Test
   public void testThatPersistUserWithSameIdentifierThrowException() {
     User user1 = new User(126L, "Devender", "admin");
     User user2 = new User(126L, "Devender", "admin");
-    extendedPersistenceContext.insertWithoutTransaction(user1);
-    extendedPersistenceContext.insertWithoutTransaction(user2);
+    assertThrows(EntityExistsException.class, () -> {
+      extendedPersistenceContext.insertWithoutTransaction(user1);
+      extendedPersistenceContext.insertWithoutTransaction(user2);
+    });
   }
 
   @Test

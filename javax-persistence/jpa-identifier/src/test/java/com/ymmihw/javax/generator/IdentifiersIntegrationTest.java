@@ -3,11 +3,9 @@ package com.ymmihw.javax.generator;
 import static org.assertj.core.api.Assertions.assertThat;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import com.ymmihw.javax.App;
 import com.ymmihw.javax.entity.Product;
 import com.ymmihw.javax.entity.Student;
@@ -20,7 +18,6 @@ import com.ymmihw.javax.entity.composite.OrderEntry;
 import com.ymmihw.javax.entity.composite.OrderEntryIdClass;
 import com.ymmihw.javax.entity.composite.OrderEntryPK;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class)
 @Transactional
 public class IdentifiersIntegrationTest {

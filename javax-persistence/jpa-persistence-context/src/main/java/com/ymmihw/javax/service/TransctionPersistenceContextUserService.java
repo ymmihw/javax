@@ -4,10 +4,10 @@ package com.ymmihw.javax.service;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import com.ymmihw.javax.entity.User;
 
-@Component
+@Service
 public class TransctionPersistenceContextUserService {
 
   @PersistenceContext

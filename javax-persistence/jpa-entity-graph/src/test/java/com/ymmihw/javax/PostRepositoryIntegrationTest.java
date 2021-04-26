@@ -1,12 +1,13 @@
 package com.ymmihw.javax;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.hibernate.LazyInitializationException;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import com.ymmihw.javax.model.Comment;
 import com.ymmihw.javax.model.Post;
 import com.ymmihw.javax.model.User;
@@ -16,17 +17,21 @@ public class PostRepositoryIntegrationTest {
 
   private static PostRepository postRepository = null;
 
-  @BeforeClass
+  @BeforeAll
   public static void once() {
     postRepository = new PostRepository();
   }
 
-  @Test(expected = LazyInitializationException.class)
+  @Test
   public void find() {
-    Post post = postRepository.find(1L);
-    assertNotNull(post.getUser());
-    String email = post.getUser().getEmail();
-    assertNull(email);
+
+    assertThrows(LazyInitializationException.class, () -> {
+      Post post = postRepository.find(1L);
+      assertNotNull(post.getUser());
+      String email = post.getUser().getEmail();
+      assertNull(email);
+    });
+
   }
 
   @Test
@@ -37,18 +42,23 @@ public class PostRepositoryIntegrationTest {
     assertNotNull(email);
   }
 
-  @Test(expected = LazyInitializationException.class)
+  @Test
   public void findWithEntityGraph_Comment_Without_User() {
-    Post post = postRepository.findWithEntityGraph(1L);
-    assertNotNull(post.getUser());
-    String email = post.getUser().getEmail();
-    assertNotNull(email);
-    assertNotNull(post.getComments());
-    assertEquals(post.getComments().size(), 2);
-    Comment comment = post.getComments().get(0);
-    assertNotNull(comment);
-    User user = comment.getUser();
-    user.getEmail();
+
+
+    assertThrows(LazyInitializationException.class, () -> {
+      Post post = postRepository.findWithEntityGraph(1L);
+      assertNotNull(post.getUser());
+      String email = post.getUser().getEmail();
+      assertNotNull(email);
+      assertNotNull(post.getComments());
+      assertEquals(post.getComments().size(), 2);
+      Comment comment = post.getComments().get(0);
+      assertNotNull(comment);
+      User user = comment.getUser();
+      user.getEmail();
+    });
+
   }
 
   @Test
@@ -63,7 +73,7 @@ public class PostRepositoryIntegrationTest {
     assertEquals(user.getEmail(), "user2@test.com");
   }
 
-  @AfterClass
+  @AfterAll
   public static void destroy() {
     postRepository.clean();
   }

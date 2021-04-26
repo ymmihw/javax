@@ -1,9 +1,9 @@
 package com.ymmihw.javax;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -12,15 +12,15 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class OrphanRemovalIntegrationTest {
 
   private static EntityManagerFactory factory;
   private static EntityManager entityManager;
 
-  @Before
+  @BeforeEach
   public void setup() {
     factory = Persistence.createEntityManagerFactory("jpa-h2-removal");
     entityManager = factory.createEntityManager();
@@ -38,20 +38,23 @@ public class OrphanRemovalIntegrationTest {
     entityManager.merge(orderRequest);
     entityManager.getTransaction().commit();
 
-    Assert.assertEquals(1, findAllOrderRequest().size());
-    Assert.assertEquals(2, findAllLineItem().size());
+    assertEquals(1, findAllOrderRequest().size());
+    assertEquals(2, findAllLineItem().size());
   }
 
-  @Test(expected = PersistenceException.class)
+  @Test
   public void whenLineItemsIsReassigned_thenThrowAnException() {
-    createOrderRequestWithLineItems();
 
-    OrderRequest orderRequest = entityManager.find(OrderRequest.class, 1L);
-    orderRequest.setLineItems(new ArrayList<>());
+    assertThrows(PersistenceException.class, () -> {
+      createOrderRequestWithLineItems();
+      OrderRequest orderRequest = entityManager.find(OrderRequest.class, 1L);
+      orderRequest.setLineItems(new ArrayList<>());
 
-    entityManager.getTransaction().begin();
-    entityManager.merge(orderRequest);
-    entityManager.getTransaction().commit();
+      entityManager.getTransaction().begin();
+      entityManager.merge(orderRequest);
+      entityManager.getTransaction().commit();
+    });
+
   }
 
   private void createOrderRequestWithLineItems() {
@@ -66,8 +69,8 @@ public class OrphanRemovalIntegrationTest {
     entityManager.persist(orderRequest);
     entityManager.getTransaction().commit();
 
-    Assert.assertEquals(1, findAllOrderRequest().size());
-    Assert.assertEquals(3, findAllLineItem().size());
+    assertEquals(1, findAllOrderRequest().size());
+    assertEquals(3, findAllLineItem().size());
   }
 
   private List<OrderRequest> findAllOrderRequest() {

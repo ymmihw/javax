@@ -1,9 +1,7 @@
 package com.ymmihw.javax;
 
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -11,14 +9,15 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.List;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class CascadeTypeRemoveIntegrationTest {
 
   private static EntityManagerFactory factory;
   private static EntityManager entityManager;
 
-  @BeforeClass
+  @BeforeAll
   public static void setup() {
     factory = Persistence.createEntityManagerFactory("jpa-h2-removal");
     entityManager = factory.createEntityManager();
@@ -34,8 +33,8 @@ public class CascadeTypeRemoveIntegrationTest {
     entityManager.remove(orderRequest);
     entityManager.getTransaction().commit();
 
-    Assert.assertEquals(0, findAllOrderRequest().size());
-    Assert.assertEquals(0, findAllShipmentInfo().size());
+    assertEquals(0, findAllOrderRequest().size());
+    assertEquals(0, findAllShipmentInfo().size());
   }
 
   private void createOrderRequestWithShipmentInfo() {
@@ -46,8 +45,8 @@ public class CascadeTypeRemoveIntegrationTest {
     entityManager.persist(orderRequest);
     entityManager.getTransaction().commit();
 
-    Assert.assertEquals(1, findAllOrderRequest().size());
-    Assert.assertEquals(1, findAllShipmentInfo().size());
+    assertEquals(1, findAllOrderRequest().size());
+    assertEquals(1, findAllShipmentInfo().size());
   }
 
   private List<OrderRequest> findAllOrderRequest() {
