@@ -33,5 +33,6 @@
   <module>jpa-json-object</module>
   <module>jpa-identifier</module>
   <module>jpa-cascaderemove-vs-orphanremoval</module>
+     <module>jpa-annotation-AttributeOverride</module>
  </modules>
 </project>
