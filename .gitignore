@@ -1,5 +1,7 @@
-/target
 .settings
 .classpath
 .project
 rebel.xml
+*.iml
+.idea
+target
