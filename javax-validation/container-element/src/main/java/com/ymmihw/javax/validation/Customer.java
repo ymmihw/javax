@@ -1,11 +1,12 @@
 package com.ymmihw.javax.validation;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PositiveOrZero;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 public class Customer {
 
@@ -16,11 +17,8 @@ public class Customer {
 
   private Integer age;
 
-  @PositiveOrZero
-  private OptionalInt numberOfOrders;
-
-  @NotBlank
-  private Profile profile;
+  @PositiveOrZero private OptionalInt numberOfOrders;
+  @Valid private Profile profile;
 
   public String getName() {
     return name;
@@ -61,5 +59,4 @@ public class Customer {
   public void setProfile(Profile profile) {
     this.profile = profile;
   }
-
 }
