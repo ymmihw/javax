@@ -1,13 +1,12 @@
 package com.ymmihw.javax.validation;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.validation.constraints.NotBlank;
+
+@Getter
+@Setter
 public class Profile {
-  private String companyName;
-
-  public String getCompanyName() {
-    return companyName;
-  }
-
-  public void setCompanyName(String companyName) {
-    this.companyName = companyName;
-  }
+  @NotBlank private String companyName;
 }
